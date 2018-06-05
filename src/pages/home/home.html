@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      A faire !
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="addItem()">
+        <ion-icon name="add-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <button ion-item *ngFor="let item of todos" (click)="viewTodo(item)">
+        {{ item.titre }}
+    </button>
+  </ion-list>
+
+  <ion-slides #slider *ngIf="todos && todos.length" loop="true" pager>
+    <ion-slide *ngFor="let todo of todos">
+      <h1>{{ todo.titre }}</h1>
+        <p>{{ todo.contenu }}</p>
+    </ion-slide>
+  </ion-slides>
+</ion-content>
